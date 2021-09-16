@@ -32,10 +32,10 @@ def main():
     path_words = input("Path of words.txt：")
     path_org = input("Path of org.txt：")
     if not os.path.exists(path_words):
-        print("There is no words file")
+        print("There is no words file.")
         exit()
     if not os.path.exists(path_org):
-        print("There is no org file")
+        print("There is no org file.")
         exit()
     path_ans = input("Path of ans.txt:")
     context = get_org(path_org)
