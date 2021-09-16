@@ -1,5 +1,6 @@
 import re
 import os
+import sys
 import pypinyin
 import zhconv
 from cnradical import Radical, RunOption
@@ -70,15 +71,15 @@ def form_re(word: str):
 
 
 def main():
-    path_words = (input("The path of words.txt:"))  # 敏感词库的绝对路径
-    path_org = (input("The path of org.txt:"))  # 待检测文件的绝对路径
+    path_words = str(sys.argv[1])  # 敏感词库的绝对路径
+    path_org = str(sys.argv[2])  # 待检测文件的绝对路径
     if not os.path.exists(path_words):
         print("file doesn't exist")
         exit()
     if not os.path.exists(path_org):
         print("file doesn't exist")
         exit()
-    path_ans = (input("The path of ans.txt:"))  # 输出结果的ans文件
+    path_ans = str(sys.argv[3])  # 输出结果的ans文件
     words = get_words(path_words)
     contents = get_org(path_org)
     re_s = [form_re(i) for i in words]  # 生成敏感词的所有re表达式
